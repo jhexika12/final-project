@@ -1,5 +1,3 @@
-
-
 CREATE TABLE USER(
 	Id INTEGER PRIMARY KEY IDENTITY,
 	Username VARCHAR(20) NOT NULL,
@@ -39,6 +37,4 @@ CREATE TABLE CAR_DATA(
 
 
 
-INSERT INTO USER(Username, Password)
-VALUES('admin','admin123');
 
