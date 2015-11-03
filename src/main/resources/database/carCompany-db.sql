@@ -37,5 +37,6 @@ CREATE TABLE CAR_DATA(
 );
 
 
-
+INSERT INTO USER(Username, Password) 
+VALUES ('admin','admin123');
 

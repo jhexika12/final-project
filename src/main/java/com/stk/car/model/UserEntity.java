@@ -17,7 +17,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "LOGIN")
+@Table(name = "USER")
 public class UserEntity {
 	
 	@Id
