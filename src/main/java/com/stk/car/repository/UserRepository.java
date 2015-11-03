@@ -1,10 +1,12 @@
 package com.stk.car.repository;
 
 import java.util.List;
+import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.stk.car.model.UserEntity;
@@ -12,32 +14,35 @@ import com.stk.car.model.UserEntity;
 @Repository
 public class UserRepository {
 	
-	@PersistenceContext
-	private EntityManager entityManager;
+	
+	private JdbcTemplate jdbcTemplate;
 
+	@Autowired
+	public UserRepository(DataSource dataSource){
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
 	
 	public void createUser(UserEntity userEntity){
-		entityManager.persist(userEntity);
-		System.out.println("[REPO] creating user" + userEntity);
+		this.jdbcTemplate.update
+			("INSERT INTO USER(Username,Password) VALUES(?,?)"
+					,userEntity.getUsername(),userEntity.getPassword());
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public UserEntity findUserByUsername(String username){
-		UserEntity userEntity = (UserEntity) entityManager.createQuery("SELECT user FROM UserEntity user WHERE user.username = :username")
-				.setParameter("username", username)
-				.getSingleResult();
+		UserEntity userEntity = null;
+		Map rowMap = this.jdbcTemplate.queryForMap("SELECT * FROM USER WHERE Username = ?",username);
+		
+		if(rowMap != null)
+			userEntity = new UserEntity((String)rowMap.get("username"),(String)rowMap.get("password"));
 		
 		return userEntity;
+		
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<UserEntity> findAllUsers(){
 		
-		List<UserEntity> userEntities = entityManager.createQuery("SELECT user FROM UserEntity user")
-				.getResultList();
-		System.out.println("[REPO] Found user query success");
-		
-		return userEntities;
-		
+		return this.jdbcTemplate.query("SELECT * FROM USER", new UserRowMapper());
 	}
 	
 }

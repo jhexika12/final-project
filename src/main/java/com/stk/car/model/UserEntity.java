@@ -39,15 +39,17 @@ public class UserEntity {
 	 * 
 	 * Super Class of not accepting two equals username
 	 */
-	public UserEntity() {
-		super();
-	}
+	
 	
 
 	public UserEntity(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
+	}
+	
+	public UserEntity() {
+		super();
 	}
 
 

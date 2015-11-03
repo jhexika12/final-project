@@ -16,9 +16,8 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	public List<UserEntity> getAllUsers(){
-		List<UserEntity> userEntities = userRepository.findAllUsers();
 		System.out.println("[SERV] Found all users");
-		return userEntities;
+		return userRepository.findAllUsers();
 	}
 	
 	public void createUser(UserEntity userEntity){
@@ -29,11 +28,10 @@ public class UserService {
 	}
 	
 	public UserEntity getUserByUsername(String username){
-		
-		UserEntity userEntity = userRepository.findUserByUsername(username);
 	
-		System.out.println("[SERV] Found User: " + userEntity);
-		return userEntity;
+		System.out.println("[SERV] Found User: " + username);
+		
+		return userRepository.findUserByUsername(username);
 	}
 
 }
