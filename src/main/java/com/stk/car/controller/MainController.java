@@ -65,7 +65,7 @@ public class MainController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Spring Security Custom Login Form");
 		modelAndView.addObject("message", "This is welcome page!");
-		modelAndView.setViewName("hello");
+		modelAndView.setViewName("home");
 		return modelAndView;
 
 	}
