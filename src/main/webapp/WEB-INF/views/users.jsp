@@ -15,11 +15,11 @@
 <h1>Welcome to users page</h1><br>
 
 <sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/biblioteca/j_spring_security_logout"> Logout </a>
+ <a href="/car-company/j_spring_security_logout"> Logout </a>
 </sec:authorize>	
 
 <sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/biblioteca/spring_security_login"> Login </a>
+ <a href="/car-company/spring_security_login"> Login </a>
 </sec:authorize>
 
 
@@ -30,7 +30,7 @@
 </sec:authorize>
 
 <sec:authorize ifAnyGranted="ROLE_USER" >
- <a href="/car-company/user"> User </a>
+ <a href="/car-company/users"> User </a>
 </sec:authorize>
 
 
@@ -44,7 +44,7 @@
 		</form>
 	
 	<div>
-		<form:form method="POST" action="createUser" commandName="user" >
+		<form:form method="POST" action="createUser" commandName="users" >
 		
 			<form:label path="username">Username:</form:label>
 			<form:input path="username"/>

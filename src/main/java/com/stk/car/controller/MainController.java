@@ -1,11 +1,6 @@
 package com.stk.car.controller;
 
 
-import java.util.List;
-
-
-
-
 
 import javax.validation.Valid;
 
@@ -28,7 +23,7 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 	
-	
+	/**
 	@RequestMapping(value = "/showUsers", method = RequestMethod.GET)
 	public ModelAndView showUSers(){
 		System.out.println("[CONT] Showing all users");
@@ -41,17 +36,27 @@ public class MainController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/createUser", method = RequestMethod.GET )
+	**/
+	
+	@RequestMapping(value = "/newUser", method = RequestMethod.GET )
+	public ModelAndView createUser(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("users");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST )
 	public String createNewUser(@Valid UserEntity userEntity, BindingResult bindingResult , ModelMap model){
 		System.out.println("Creating new user" + userEntity);
 		if(bindingResult.hasErrors()){
-			return "user";
+			return "users";
 		}
 		userService.createUser(userEntity);
 		model.addAttribute("successMsg","User created...");
-		model.addAttribute("user", new UserEntity());
+		model.addAttribute("users", new UserEntity());
 		
-		return "user";
+		return "users";
 	}
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)

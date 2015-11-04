@@ -24,8 +24,7 @@ public class UserRepository {
 	
 	public void createUser(UserEntity userEntity){
 		this.jdbcTemplate.update
-			("INSERT INTO USER(Username,Password) VALUES(?,?)"
-					,userEntity.getUsername(),userEntity.getPassword());
+			("INSERT INTO USER(Username,Password) VALUES(?,?)",userEntity.getUsername(),userEntity.getPassword());
 	}
 	
 	@SuppressWarnings("rawtypes")

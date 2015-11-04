@@ -120,10 +120,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	
 	<!-- Spring Security JSP Taglib -->
 	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-taglibs</artifactId>
-		<version>3.2.9.RELEASE</version>
-	</dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
 		
 	<dependency>
 		<groupId>org.hibernate</groupId>
