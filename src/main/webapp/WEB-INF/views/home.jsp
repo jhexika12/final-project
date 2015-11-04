@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">HOME</a></li>
-        <li><a href="#">LOGIN</a></li>
+        <li><a href="login">LOGIN</a></li>
         <li><a href="#">CREATE USER</a></li>
         <li><a href="#">SCHEDULE</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -43,8 +43,13 @@
     <h1>Schedule</h1>
     <p>We specialize in the support of your car.</p>
   </div>
-        
-    
+   
+   
+   <div class="container-fluid text-center">
+    <h1>Here is gonna be the other things</h1>
+  </div>
+   
+   
         
 	</body>
 </html>
