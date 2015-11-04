@@ -56,30 +56,21 @@
   .navbar-default .navbar-toggle {
       border-color: transparent;
   }
-  .open .dropdown-toggle {
-      color: #fff;
-      background-color: #555 !important;
-  }
-  .dropdown-menu li a {
-      color: #000 !important;
-  }
-  .dropdown-menu li a:hover {
-      background-color: red !important;
-  }
-
-.carousel-inner img {
-   
-    margin: auto;
+  
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.carousel-caption h3 {
-    color: #fff !important;
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0px auto;
 }
+  
 
-@media (max-width: 600px) {
-    .carousel-caption {
-        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-    }
-}
+
 
  
