@@ -15,18 +15,18 @@
 <h1>Welcome to users page</h1><br>
 
 <sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/j_spring_security_logout"> Logout </a>
+ <a href="/car-company/welcome"> Logout </a>
 </sec:authorize>	
 
 <sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/spring_security_login"> Login </a>
+ <a href="/car-company/login"> Login </a>
 </sec:authorize>
 
 
 
 <h2>
 	<sec:authorize ifAnyGranted="ROLE_ADMIN" >
- <a href="/car-company/admin"> Admin </a>
+ <a href="/car-company/welcome"> Admin </a>
 </sec:authorize>
 
 <sec:authorize ifAnyGranted="ROLE_USER" >
@@ -50,8 +50,8 @@
 			<form:input path="username"/>
 			<form:errors path="username"> </form:errors><br/>
 			
-			<form:label path="password">Password:</form:label>
-			<form:input path="password"/>
+			<form:label path="password" >Password:</form:label>
+			<form:input path="password" type="password"/> 
 			<form:errors path="password"> </form:errors><br/>
 			
 			
