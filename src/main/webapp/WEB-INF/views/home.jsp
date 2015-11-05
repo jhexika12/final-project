@@ -55,6 +55,7 @@
         <li><a href="#">HOME</a></li>
         <li><a href="login">LOGIN</a></li>
         <li><a href="newUser">CREATE USER</a></li>
+        <li><a href="newCar">CREATE CAR</a></li>
         <li><a href="#">SCHEDULE</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
