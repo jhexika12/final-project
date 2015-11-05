@@ -20,11 +20,12 @@
 	<context:component-scan base-package="com.stk.car" use-default-filters="false">
         <context:include-filter expression="org.springframework.stereotype.Component" type="annotation" />
     </context:component-scan>
-  
+    
+ 
 
 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:mem:examples" />
+		<property name="url" value="jdbc:hsqldb:mem:jessica" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
@@ -58,5 +59,8 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean id="UserRepository" class="com.stk.car.repository.UserRepository"/>
+	<bean id="UserDataRepository" class="com.stk.car.repository.UserDataRepository"/>
 </beans>
 
