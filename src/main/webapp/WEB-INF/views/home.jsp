@@ -17,7 +17,10 @@
         
 	</head>
 	<body>  
-	<sec:authorize access="hasRole('ROLE_USER')">
+	
+        
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -39,8 +42,6 @@
 
 
 	</sec:authorize>
-        
-    <nav class="navbar navbar-default navbar-fixed-top">
   <div >
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
