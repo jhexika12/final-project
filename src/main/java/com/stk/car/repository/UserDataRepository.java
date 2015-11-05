@@ -13,7 +13,7 @@ import com.stk.car.model.UserDataEntity;
 @Transactional
 public class UserDataRepository {
 	
-	@PersistenceContext
+	@PersistenceContext(name= "car-company")
 	private EntityManager entityManager;
 	
 	public void createCustomer(UserDataEntity userDataEntity){
