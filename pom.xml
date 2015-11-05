@@ -119,6 +119,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<version>3.2.9.RELEASE</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		<version>1.6.0.RELEASE</version>
+	</dependency>
+	
 	<!-- Spring Security JSP Taglib -->
 	<dependency>
 			<groupId>org.springframework.security</groupId>

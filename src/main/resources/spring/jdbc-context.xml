@@ -1,5 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation=
@@ -8,11 +10,17 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context 
-		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/data/jpa 
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		">
 
 	<context:component-scan base-package="com.stk.car" use-default-filters="false">
         <context:include-filter expression="org.springframework.stereotype.Component" type="annotation" />
     </context:component-scan>
+  
 
 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -28,6 +36,12 @@
 	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<jpa:repositories base-package="com.stk.car.repository"
+     	entity-manager-factory-ref="entityManagerFactory"
+    	 transaction-manager-ref="transactionManager"/>
 	
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
 		<property name="persistenceUnitName" value="car-company" />
