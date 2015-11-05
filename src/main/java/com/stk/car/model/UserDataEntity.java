@@ -13,7 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
+/**
+ * User Data Entity (customer)
+ * 
+ * @author Yessica GC
+ *
+ */
 @Entity
 @Table(name="USER_DATA")
 public class UserDataEntity {

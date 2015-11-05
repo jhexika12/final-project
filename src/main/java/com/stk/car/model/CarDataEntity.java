@@ -11,6 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
+/**
+ * Car Data Entity
+ * 
+ * @author Yessica GC
+ *
+ */
 @Entity
 @Table(name="CAR_DATA")
 public class CarDataEntity {

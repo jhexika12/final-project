@@ -12,6 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stk.car.model.UserEntity;
 
+/**
+ * User Repository
+ * 
+ * @author Yessica GC
+ *
+ */
 @Repository
 @Transactional
 public class UserRepository {
@@ -19,7 +25,11 @@ public class UserRepository {
 	@PersistenceContext(name= "car-company")
 	private EntityManager entityManager;
 	
-	
+	/**
+	 * Creating new user {@link UserEntity}
+	 * 
+	 * @param userEntity
+	 */
 
 	public void createUser(UserEntity userEntity){
 		entityManager.persist(userEntity);

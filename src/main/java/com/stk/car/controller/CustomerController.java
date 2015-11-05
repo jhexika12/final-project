@@ -13,6 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.stk.car.model.UserDataEntity;
 import com.stk.car.service.UserDataService;
 
+/**
+ * Adding new customer and users data controller
+ * 
+ * @author Yessica GC
+ *
+ */
+
 @Controller
 @RequestMapping(value = "/")
 public class CustomerController {
@@ -20,6 +27,12 @@ public class CustomerController {
 	@Autowired
 	private UserDataService userDataService;
 	
+	
+	/**
+	 * getting the data from customer
+	 * 
+	 * @return data of customer
+	 */
 	@RequestMapping(value = "/newCustomer", method = RequestMethod.GET )
 	public ModelAndView createCustomer(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -28,6 +41,15 @@ public class CustomerController {
 		return modelAndView;
 	}
 	
+	
+	/**
+	 * Adding data of customer
+	 * 
+	 * @param customer
+	 * @param bindingResult
+	 * @param model
+	 * @return entity customer
+	 */
 	@RequestMapping(value = "/createCustomer", method = RequestMethod.POST )
 	public String createNewCustomer(@Valid UserDataEntity customer, BindingResult bindingResult , ModelMap model){
 		System.out.println("Creating new customer" + customer);

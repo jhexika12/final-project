@@ -6,6 +6,12 @@ import org.springframework.stereotype.Service;
 import com.stk.car.model.UserDataEntity;
 import com.stk.car.repository.UserDataRepository;
 
+/**
+ * Service of the User information (customer)
+ * 
+ * @author Yessica GC
+ *
+ */
 
 @Service
 public class UserDataService {
@@ -13,6 +19,11 @@ public class UserDataService {
 	@Autowired
 	private UserDataRepository userDataRepository;
 	
+	/**
+	 * Creating the new customer {@link UserDataEntity}
+	 * 
+	 * @param userDataEntity
+	 */
 	public void createCustomer(UserDataEntity userDataEntity){
 		System.out.println("[SERV] Inserting customer");
 		

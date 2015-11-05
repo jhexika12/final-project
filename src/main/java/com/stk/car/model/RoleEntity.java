@@ -5,6 +5,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * User Role entity
+ * 
+ * @author Yessica GC
+ *
+ */
 @Table(name = "USER_ROLES")
 public class RoleEntity {
 	

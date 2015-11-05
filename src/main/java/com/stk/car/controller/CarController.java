@@ -12,7 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.stk.car.model.CarDataEntity;
 import com.stk.car.service.CarService;
 
-
+/**
+ * Controller from car by adding a new one
+ * 
+ * @author Yessica GC
+ *
+ */
 @Controller
 @RequestMapping(value = "/")
 public class CarController {
@@ -20,6 +25,11 @@ public class CarController {
 	@Autowired
 	private CarService carService;
 	
+	/**
+	 * Getting the information on the jsp of he car
+	 * 
+	 * @return the view of the post
+	 */
 	@RequestMapping(value = "/newCar", method = RequestMethod.GET )
 	public ModelAndView createCar(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -28,6 +38,14 @@ public class CarController {
 		return modelAndView;
 	}
 	
+	/**
+	 * Posting car data on hibernate
+	 * 
+	 * @param car
+	 * @param bindingResult
+	 * @param modelAndView
+	 * @return the entity of the new car
+	 */
 	@RequestMapping(value = "/createCar", method = RequestMethod.POST )
 	public ModelAndView createNewCustomer(@Valid CarDataEntity car, BindingResult bindingResult ,ModelAndView modelAndView){
 		System.out.println("Creating new car" + car);

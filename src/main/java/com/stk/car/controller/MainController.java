@@ -13,7 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.stk.car.model.UserEntity;
 import com.stk.car.service.UserService;
 
-
+/**
+ * Controller from home and adding new user, and handler of errors
+ * 
+ * @author Yessica GC
+ *
+ */
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
@@ -21,7 +26,11 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 	
-	
+	/**
+	 * Getting data from new user (login)
+	 * 
+	 * @return view of new user
+	 */
 	@RequestMapping(value = "/newUser", method = RequestMethod.GET )
 	public ModelAndView createUser(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -30,6 +39,14 @@ public class MainController {
 		return modelAndView;
 	}
 	
+	/**
+	 * Adding user login
+	 * 
+	 * @param users
+	 * @param bindingResult
+	 * @param modelAndView
+	 * @return user entity {@link UserEntity}
+	 */
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST )
 	public ModelAndView createNewUser(@Valid UserEntity users, BindingResult bindingResult ,ModelAndView modelAndView){
 		System.out.println("Creating new user" + users);
@@ -41,7 +58,11 @@ public class MainController {
 		return modelAndView;
 	}
 	
-	
+	/**
+	 * default page
+	 * 
+	 * @return welcome page 
+	 */
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
@@ -66,6 +87,14 @@ public class MainController {
 
 	}
 
+	
+	/**
+	 * getting the login data
+	 * 
+	 * @param error
+	 * @param logout
+	 * @return successfuling login
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {

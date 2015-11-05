@@ -8,20 +8,34 @@ import org.springframework.stereotype.Service;
 import com.stk.car.model.UserEntity;
 import com.stk.car.repository.UserRepository;
 
-
+/**
+* Service of the user
+* 
+* @author Yessica GC
+*
+*/
 @Service
 public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
 	
-	
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
 	public List<UserEntity> getAllUsers(){
 		List<UserEntity> userEntities = userRepository.findAllUsers();
 		System.out.println("[SERV] Found all users");
 		return userEntities;
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param userEntity
+	 */
 	public void createUser(UserEntity userEntity){
 		System.out.println("[SERV] Inserting user");
 		

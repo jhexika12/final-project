@@ -14,6 +14,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
+/**
+ * Schedule Enity
+ * 
+ * @author Yessica GC
+ *
+ */
 @Entity
 @Table(name = "SCHEDULE")
 public class ScheduleEntity {
