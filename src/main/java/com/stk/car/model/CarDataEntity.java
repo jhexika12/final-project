@@ -1,5 +1,6 @@
 package com.stk.car.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class CarDataEntity {
     @JoinColumn(name = "USER_ID")
 	private UserEntity userEntity;
 
-	
+
 	
 	
 	public CarDataEntity() {

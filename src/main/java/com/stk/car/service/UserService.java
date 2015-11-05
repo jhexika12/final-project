@@ -15,6 +15,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
 	public List<UserEntity> getAllUsers(){
 		List<UserEntity> userEntities = userRepository.findAllUsers();
 		System.out.println("[SERV] Found all users");

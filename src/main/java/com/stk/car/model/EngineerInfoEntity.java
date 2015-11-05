@@ -44,6 +44,8 @@ public class EngineerInfoEntity {
 	
 	@Column(name = "DESCRIPTION", columnDefinition = "VARCHAR", length = 50)
 	private String description;
+	
+
 
 	public Integer getId() {
 		return id;

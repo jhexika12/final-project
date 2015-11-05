@@ -1,12 +1,9 @@
 package com.stk.car.controller;
 
-
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +15,11 @@ import com.stk.car.service.UserService;
 
 
 @Controller
+@RequestMapping(value = "/")
 public class MainController {
 	
 	@Autowired
 	private UserService userService;
-	
 	
 	
 	@RequestMapping(value = "/newUser", method = RequestMethod.GET )
@@ -34,17 +31,17 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST )
-	public String createNewUser(@Valid UserEntity users, BindingResult bindingResult , ModelMap model){
+	public ModelAndView createNewUser(@Valid UserEntity users, BindingResult bindingResult ,ModelAndView modelAndView){
 		System.out.println("Creating new user" + users);
-		if(bindingResult.hasErrors()){
-			return "users";
-		}
 		userService.createUser(users);
-		model.addAttribute("successMsg","User created...");
-		model.addAttribute("users", new UserEntity());
+		modelAndView.addObject("successMsg","User created...");
+		modelAndView.addObject("users", new UserEntity());
 		
-		return "users";
+		modelAndView.setViewName("users");
+		return modelAndView;
 	}
+	
+	
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {

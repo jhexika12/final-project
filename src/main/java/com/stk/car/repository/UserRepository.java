@@ -4,24 +4,27 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
 
 import com.stk.car.model.UserEntity;
 
 @Repository
+@Transactional
 public class UserRepository {
 	
-	@PersistenceContext
+	@PersistenceContext(name= "car-company")
 	private EntityManager entityManager;
 	
 	
-	
+
 	public void createUser(UserEntity userEntity){
 		entityManager.persist(userEntity);
-			System.out.println("[REPO] Cre");
+			System.out.println("[REPO] Create user");
 	}
 	
-	
+
 	public UserEntity findUserByUsername(String username){
 		UserEntity userEntity = (UserEntity) entityManager.createQuery("SELECT user from UserEntity user WHERE user.username = :username")
 				.setParameter("username", username)
@@ -30,6 +33,7 @@ public class UserRepository {
 		return userEntity;
 	}
 	
+
 	@SuppressWarnings("unchecked")
 	public List<UserEntity> findAllUsers(){
 		List<UserEntity> userEntities = entityManager.createQuery("SELECT user FROM UserEntity user")
