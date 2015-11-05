@@ -28,6 +28,7 @@ public class UserService {
 	public List<UserEntity> getAllUsers(){
 		List<UserEntity> userEntities = userRepository.findAllUsers();
 		System.out.println("[SERV] Found all users");
+		
 		return userEntities;
 	}
 	
@@ -39,6 +40,7 @@ public class UserService {
 	public void createUser(UserEntity userEntity){
 		System.out.println("[SERV] Inserting user");
 		
+		userEntity.setEnable(true);
 		userRepository.createUser(userEntity);
 		
 	}

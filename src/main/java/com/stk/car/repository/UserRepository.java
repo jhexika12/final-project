@@ -33,6 +33,7 @@ public class UserRepository {
 
 	public void createUser(UserEntity userEntity){
 		entityManager.persist(userEntity);
+		
 			System.out.println("[REPO] Create user");
 	}
 	

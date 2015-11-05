@@ -1,8 +1,10 @@
 package com.stk.car.model;
 
 import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -11,18 +13,25 @@ import javax.persistence.Table;
  * @author Yessica GC
  *
  */
-@Table(name = "USER_ROLES")
+@Entity
+@Table(name = "ROLE")
 public class RoleEntity {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", columnDefinition = "INTEGER")
+	private Integer id;
 	
 	@Column(name = "ROLE", columnDefinition = "VARCHAR", length = 45)
 	private String role;
-	
-	@Column(name = "USERNAME", columnDefinition = "VARCHAR", length = 45 )
-	private String username;
-	
-	@OneToOne(optional=false)
-	@JoinColumn(name="USER_ID", nullable = false)
-	private UserEntity userEntity;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getRole() {
 		return role;
@@ -32,27 +41,10 @@ public class RoleEntity {
 		this.role = role;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public UserEntity getUserEntity() {
-		return userEntity;
-	}
-
-	public void setUserEntity(UserEntity userEntity) {
-		this.userEntity = userEntity;
-	}
-
-	public RoleEntity(String role, String username, UserEntity userEntity) {
+	public RoleEntity(Integer id, String role) {
 		super();
+		this.id = id;
 		this.role = role;
-		this.username = username;
-		this.userEntity = userEntity;
 	}
 
 	public RoleEntity() {
@@ -63,11 +55,8 @@ public class RoleEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result
-				+ ((userEntity == null) ? 0 : userEntity.hashCode());
-		result = prime * result
-				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -80,29 +69,24 @@ public class RoleEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		RoleEntity other = (RoleEntity) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (role == null) {
 			if (other.role != null)
 				return false;
 		} else if (!role.equals(other.role))
-			return false;
-		if (userEntity == null) {
-			if (other.userEntity != null)
-				return false;
-		} else if (!userEntity.equals(other.userEntity))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "RoleEntity [role=" + role + ", username=" + username
-				+ ", userEntity=" + userEntity + "]";
+		return "RoleEntity [id=" + id + ", role=" + role + "]";
 	}
+	
 	
 	
 }
