@@ -9,10 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ <link href="resources/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <title>Engineer</title>
 </head>
 <body>
-
+<div class="container">
 <h3>Welcome to Engineer page</h3><br>
 	<h2>
 	<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">
@@ -80,6 +83,7 @@
 <sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
 		<a href="/car-company/welcome"> Logout </a>
 	</sec:authorize>
-
+</div>
+ <script type="text/javascript" src="resources/js/bootstrap.js"></script>
 </body>
 </html>
