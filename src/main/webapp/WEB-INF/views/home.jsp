@@ -58,7 +58,7 @@
         <li><a href="login">LOGIN</a></li>
         <li><a href="newUser">CREATE USER</a></li>
         <li><a href="newCar">CREATE CAR</a></li>
-        <li><a href="#">SCHEDULE</a></li>
+        <li><a href="newSchedule">SCHEDULE</a></li>
         <sec:authorize ifAnyGranted="ROLE_ADMIN">
 			<li><a href="newEngineer">NEW ENGINEER</a></li>
 		</sec:authorize>

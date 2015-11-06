@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserDetailsService{
 			throw new UsernameNotFoundException("User doesn't exists.");
 		} else {
 			
+
 			Profile profile = new Profile();
 			profile.setProfileName("ROLE_USER");
 		

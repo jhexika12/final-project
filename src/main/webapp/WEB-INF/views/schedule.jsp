@@ -43,33 +43,31 @@
 	</form>
 
 	<div>
-		<form:form method="POST" action="createUser" commandName="users">
+		<form:form method="POST" action="createSchedule" commandName="schedule">
 
-			<form:label path="username">Username:</form:label>
-			<form:input path="username" />
-			<form:errors path="username">
+			<form:label path="date">Date:</form:label>
+			<form:input path="date" />
+			<form:errors path="date">
 			</form:errors>
 			<br />
 
-			<form:label path="password">Password:</form:label>
-			<form:input path="password" type="password" />
-			<form:errors path="password">
+			<form:label path="Description">Description:</form:label>
+			<form:input path="Description" />
+			<form:errors path="Description">
 			</form:errors>
 			<br />
 
 
 
-			<input type="submit" value="Create User">
+			<input type="submit" value="Create Schedule">
 		</form:form>
 	</div>
 
-	<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/newCustomer"> Add Your Full Data </a>
-</sec:authorize>
+	
 
 <c:if test="${not empty successMsg}">
 <h2>${successMsg}</h2>
-<h2>${users}</h2>
+<h2>${schedule}</h2>
 </c:if>
 
 

@@ -38,9 +38,12 @@ public class UserService {
 	 * @param userEntity
 	 */
 	public void createUser(UserEntity userEntity){
+		//RoleEntity roleEntity = new RoleEntity();
 		System.out.println("[SERV] Inserting user");
 		
 		userEntity.setEnable(true);
+		//roleEntity.setRole("ROLE_USER");
+		
 		userRepository.createUser(userEntity);
 		
 	}

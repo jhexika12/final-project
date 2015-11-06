@@ -52,7 +52,7 @@ public class MainController {
 		System.out.println("Creating new user" + users);
 		userService.createUser(users);
 		modelAndView.addObject("successMsg","User created...");
-		modelAndView.addObject("users", new UserEntity());
+		modelAndView.addObject("users", users);
 		
 		modelAndView.setViewName("users");
 		return modelAndView;

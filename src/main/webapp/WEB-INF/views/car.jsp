@@ -62,6 +62,7 @@
 
 <c:if test="${not empty successMsg}">
 <h2>${successMsg}</h2>
+<h2>${car}</h2>
 </c:if>
 
 

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h1>Welcome to Engineer page</h1><br>
+<h3>Welcome to Engineer page</h3><br>
 
 	<sec:authorize ifAnyGranted="ROLE_ADMIN">
 		<a href="/car-company/welcome"> Logout </a>
