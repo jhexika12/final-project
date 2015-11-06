@@ -58,9 +58,12 @@
         <li><a href="login">LOGIN</a></li>
         <li><a href="newUser">CREATE USER</a></li>
         <li><a href="newCar">CREATE CAR</a></li>
-        <li><a href="newSchedule">SCHEDULE</a></li>
+        <li><a href="viewSchedule">SCHEDULE</a></li>
         <sec:authorize ifAnyGranted="ROLE_ADMIN">
 			<li><a href="newEngineer">NEW ENGINEER</a></li>
+		</sec:authorize>
+		<sec:authorize ifAnyGranted="ROLE_ADMIN">
+			<li><a href="newSchedule">NEW SCHEDULE</a></li>
 		</sec:authorize>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>

@@ -1,5 +1,8 @@
 package com.stk.car.controller;
 
+
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +58,19 @@ public class ScheduleController {
 		model.addAttribute("schedule", schedule);
 		
 		return "schedule";
+		
 	}
+	
+	@RequestMapping(value = "/viewSchedule", method = RequestMethod.GET)
+	public ModelAndView showSchedule( ){
+		
+		List<ScheduleEntity> scheduleEntities = scheduleService.getAllSchedule();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("schedule");
+		modelAndView.addObject("schedule",scheduleEntities);
+		return modelAndView;
+	}
+	
+
+		
 }

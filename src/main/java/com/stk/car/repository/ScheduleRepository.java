@@ -25,6 +25,12 @@ public class ScheduleRepository {
 			System.out.println("[REPO] Create schedule");
 	}
 	
+	public void deleteSchedule(ScheduleEntity scheduleEntity){
+		entityManager.remove(scheduleEntity);
+		
+			System.out.println("[REPO] Create schedule");
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public List<ScheduleEntity> findScheduleByDate(Date date){

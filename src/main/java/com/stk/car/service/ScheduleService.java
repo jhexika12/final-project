@@ -35,6 +35,13 @@ public class ScheduleService {
 		
 	}
 	
+	public void deleteSchedule(ScheduleEntity scheduleEntity){
+		System.out.println("[SERV] Deleting schedule");
+		
+		scheduleRepository.deleteSchedule(scheduleEntity);
+		
+	}
+	
 	
 	public List<ScheduleEntity> getScheduleByDate(Date date){
 		List<ScheduleEntity> scheduleEntities = scheduleRepository.findScheduleByDate(date);
