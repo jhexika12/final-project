@@ -66,8 +66,8 @@ public class ScheduleController {
 		
 		List<ScheduleEntity> scheduleEntities = scheduleService.getAllSchedule();
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("schedule");
-		modelAndView.addObject("schedule",scheduleEntities);
+		modelAndView.setViewName("viewSchedule");
+		modelAndView.addObject("viewSchedule",scheduleEntities);
 		return modelAndView;
 	}
 	
