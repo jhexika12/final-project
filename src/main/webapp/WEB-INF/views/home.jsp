@@ -1,7 +1,7 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="false"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,13 +33,14 @@
 			}
 		</script>
 
+	<!-- 
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 			<h2>
 				User : ${pageContext.request.userPrincipal.name} | <a
 					href="javascript:formSubmit()"> Logout</a>
 			</h2>
 		</c:if>
-
+ -->
 
 	</sec:authorize>
   <div >
@@ -58,6 +59,9 @@
         <li><a href="newUser">CREATE USER</a></li>
         <li><a href="newCar">CREATE CAR</a></li>
         <li><a href="#">SCHEDULE</a></li>
+        <sec:authorize ifAnyGranted="ROLE_ADMIN">
+			<li><a href="newEngineer">NEW ENGINEER</a></li>
+		</sec:authorize>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
@@ -74,6 +78,7 @@
    
    <div class="container-fluid text-center">
     <h1>Here is gonna be the other things</h1>
+    
   </div>
    
    

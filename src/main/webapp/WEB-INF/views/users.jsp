@@ -14,53 +14,52 @@
 <body>
 <h1>Welcome to users page</h1><br>
 
-<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/welcome"> Logout </a>
-</sec:authorize>	
+	<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN">
+		<a href="/car-company/welcome"> Logout </a>
+	</sec:authorize>
 
-<sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/login"> Login </a>
-</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN">
+		<a href="/car-company/login"> Login </a>
+	</sec:authorize>
 
 
 
-<h2>
-	<sec:authorize ifAnyGranted="ROLE_ADMIN" >
- <a href="/car-company/welcome"> Admin </a>
-</sec:authorize>
-
-<sec:authorize ifAnyGranted="ROLE_USER" >
- <a href="/car-company/users"> User </a>
-</sec:authorize>
-
+	<h2>
+		<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
+			<a href="/car-company/welcome"> HOME PAGE </a>
+		</sec:authorize>
 
 	</h2>
 
 
-<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		<form action="${logoutUrl}" method="post" id="logoutForm">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-		</form>
-	
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+
 	<div>
-		<form:form method="POST" action="createUser" commandName="users" >
-		
+		<form:form method="POST" action="createUser" commandName="users">
+
 			<form:label path="username">Username:</form:label>
-			<form:input path="username"/>
-			<form:errors path="username"> </form:errors><br/>
-			
-			<form:label path="password" >Password:</form:label>
-			<form:input path="password" type="password"/> 
-			<form:errors path="password"> </form:errors><br/>
-			
-			
-		
+			<form:input path="username" />
+			<form:errors path="username">
+			</form:errors>
+			<br />
+
+			<form:label path="password">Password:</form:label>
+			<form:input path="password" type="password" />
+			<form:errors path="password">
+			</form:errors>
+			<br />
+
+
+
 			<input type="submit" value="Create User">
 		</form:form>
 	</div>
 
-<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
+	<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
  <a href="/car-company/newCustomer"> Add Your Full Data </a>
 </sec:authorize>
 

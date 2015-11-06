@@ -12,6 +12,7 @@
 		<class>com.stk.car.model.CarDataEntity</class>
 		<class>com.stk.car.model.EngineerInfoEntity</class>
 		<class>com.stk.car.model.ScheduleEntity</class>
+		<class>com.stk.car.model.RoleEntity</class>
 
 	<exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>

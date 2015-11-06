@@ -1,5 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<!--<%@page session="true"%> -->
 <html>
 <body>
 	<h1>Title : ${title}</h1>
@@ -22,6 +25,8 @@
 				href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
+	
+	
 
 </body>
 </html>
