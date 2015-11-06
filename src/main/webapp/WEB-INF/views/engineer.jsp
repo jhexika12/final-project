@@ -14,26 +14,19 @@
 <body>
 
 <h3>Welcome to Engineer page</h3><br>
-
-	<sec:authorize ifAnyGranted="ROLE_ADMIN">
-		<a href="/car-company/welcome"> Logout </a>
+	<h2>
+	<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">
+		<a href="/car-company/login"> Login </a>
 	</sec:authorize>
 
-	<sec:authorize ifNotGranted="ROLE_USER">
+	<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
 		<a href="/car-company/welcome"> Home Page </a>
 	</sec:authorize>
 
-
-
-	<h2>
-		<sec:authorize ifAnyGranted="ROLE_ADMIN">
-			<a href="/car-company/welcome"> Admin </a>
-		</sec:authorize>
-
-
 	</h2>
 
-	<sec:authorize ifAnyGranted="ROLE_ADMIN">
+
+	<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
 			<input type="hidden" name="${_csrf.parameterName}"
@@ -78,12 +71,15 @@
 				<input type="submit" value="Create Engineer">
 			</form:form>
 		</div>
-	</sec:authorize>
+</sec:authorize>
 
 	<c:if test="${not empty successMsg}">
 		<h2>${successMsg}</h2>
+			<h2>${engineer}</h2>
 	</c:if>
-
+<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
+		<a href="/car-company/welcome"> Logout </a>
+	</sec:authorize>
 
 </body>
 </html>

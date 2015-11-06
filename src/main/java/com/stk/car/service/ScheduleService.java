@@ -1,6 +1,5 @@
 package com.stk.car.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class ScheduleService {
 	}
 	
 	
-	public List<ScheduleEntity> getScheduleByDate(Date date){
+	public List<ScheduleEntity> getScheduleByDate(String date){
 		List<ScheduleEntity> scheduleEntities = scheduleRepository.findScheduleByDate(date);
 		System.out.println("[SERV] Found dates");
 		

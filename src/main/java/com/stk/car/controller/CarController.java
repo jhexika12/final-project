@@ -51,7 +51,7 @@ public class CarController {
 		System.out.println("Creating new car" + car);
 		carService.createCar(car);
 		modelAndView.addObject("successMsg","Car created...");
-		modelAndView.addObject("car", new CarDataEntity());
+		modelAndView.addObject("car", car);
 		
 		modelAndView.setViewName("car");
 		return modelAndView;

@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,17 +38,15 @@ public class EnginneerInfoController {
 	 * @return entity customer
 	 */
 	@RequestMapping(value = "/createEngineer", method = RequestMethod.POST )
-	public String createNewEngineer(@Valid EngineerInfoEntity engineer, BindingResult bindingResult , ModelMap model){
+	public ModelAndView createNewEngineer(@Valid EngineerInfoEntity engineer, BindingResult bindingResult){
+		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("Creating new enginer" + engineer);
-		if(bindingResult.hasErrors()){
-			return "engineer";
-		}
 		
 		engineerInfoService.createEngineer(engineer);
-		model.addAttribute("successMsg","Engineer created...");
-		model.addAttribute("engineer", new EngineerInfoEntity());
-		
-		return "engineer";
+		modelAndView.addObject("successMsg","Engineer created...");
+		modelAndView.addObject("engineer", engineer);
+		modelAndView.setViewName("engineer");
+		return modelAndView;
 	}
 
 }

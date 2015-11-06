@@ -25,14 +25,10 @@
 
 
 	<h2>
-		<sec:authorize ifAnyGranted="ROLE_USER">
-			<a href="/car-company/welcome"> USER </a>
+		<sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
+			<a href="/car-company/welcome"> Back Home </a>
 		</sec:authorize>
 		
-		<sec:authorize ifAnyGranted="ROLE_ADMIN">
-			<a href="/car-company/welcome"> ADMIN </a>
-		</sec:authorize>
-
 	</h2>
 
 
@@ -41,11 +37,16 @@
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 	</form>
+	<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN">
+		<div>
+		<c:forEach var="i" items="${schedules}">
+			<h2>${i.userEntity.username}</h2>
+			<h2>${i.description}</h2>
+			<h2>${i.date_car}</h2>
+		</c:forEach>
 
-	<div>
-		<h2>${viewSchedule}</h2>
-	</div>
-
+		</div>
+	</sec:authorize>
 
 </body>
 </html>

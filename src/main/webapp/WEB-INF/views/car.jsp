@@ -12,11 +12,9 @@
 </head>
 <body>
 
-<h1>Welcome to customer page</h1><br>
+<h3>Welcome to Car page</h3><br>
 
-<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/welcome"> Logout </a>
-</sec:authorize>	
+
 
 <sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
  <a href="/car-company/login"> Login </a>
@@ -25,8 +23,8 @@
 
 
 <h2>
-	<sec:authorize ifAnyGranted="ROLE_ADMIN" >
- <a href="/car-company/welcome"> Admin </a>
+	<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER" >
+ <a href="/car-company/welcome"> Back Home </a>
 </sec:authorize>
 
 
@@ -64,6 +62,9 @@
 <h2>${successMsg}</h2>
 <h2>${car}</h2>
 </c:if>
+<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
+ <a href="/car-company/welcome"> Logout </a>
+</sec:authorize>	
 
 
 </body>

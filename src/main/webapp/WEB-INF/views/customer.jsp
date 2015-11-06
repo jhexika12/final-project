@@ -15,14 +15,6 @@
 
 <h1>Welcome to customer page</h1><br>
 
-<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/welcome"> Logout </a>
-</sec:authorize>	
-
-<sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
- <a href="/car-company/login"> Login </a>
-</sec:authorize>
-
 
 
 <h2>
@@ -31,7 +23,7 @@
 </sec:authorize>
 
 <sec:authorize ifAnyGranted="ROLE_USER" >
- <a href="/car-company/users"> User </a>
+ <a href="/car-company/welcome"> Back Home </a>
 </sec:authorize>
 
 
@@ -67,10 +59,6 @@
 			<form:input path="email"/> 
 			<form:errors path="email"> </form:errors><br/>
 			
-			<form:label path="birthday" >Birthday:</form:label>
-			<form:input path="birthday"/> 
-			<form:errors path="birthday"> </form:errors><br/>
-			
 		
 			<input type="submit" value="Create Customer">
 		</form:form>
@@ -78,8 +66,16 @@
 
 <c:if test="${not empty successMsg}">
 <h2>${successMsg}</h2>
+<h2>${customer}</h2>
 </c:if>
 
+<sec:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN" >
+ <a href="/car-company/welcome"> Logout </a>
+</sec:authorize>	
+
+<sec:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN" >
+ <a href="/car-company/login"> Login </a>
+</sec:authorize>
 
 </body>
 </html>

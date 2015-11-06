@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,25 +41,16 @@ public class CustomerController {
 	}
 	
 	
-	/**
-	 * Adding data of customer
-	 * 
-	 * @param customer
-	 * @param bindingResult
-	 * @param model
-	 * @return entity customer
-	 */
+	
 	@RequestMapping(value = "/createCustomer", method = RequestMethod.POST )
-	public String createNewCustomer(@Valid UserDataEntity customer, BindingResult bindingResult , ModelMap model){
+	public ModelAndView createNewUser(@Valid UserDataEntity customer, BindingResult bindingResult ,ModelAndView modelAndView){
 		System.out.println("Creating new customer" + customer);
-		if(bindingResult.hasErrors()){
-			return "customer";
-		}
 		userDataService.createCustomer(customer);
-		model.addAttribute("successMsg","Customer created...");
-		model.addAttribute("customer", new UserDataEntity());
+		modelAndView.addObject("successMsg","Customer created...");
+		modelAndView.addObject("customer", customer);
 		
-		return "customer";
+		modelAndView.setViewName("customer");
+		return modelAndView;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.stk.car.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,8 +32,8 @@ public class ScheduleRepository {
 	
 
 	@SuppressWarnings("unchecked")
-	public List<ScheduleEntity> findScheduleByDate(Date date){
-		List<ScheduleEntity> scheduleEntities = entityManager.createQuery("SELECT schedule from ScheduleEntity schedule  WHERE schedule.date= :date")
+	public List<ScheduleEntity> findScheduleByDate(String date){
+		List<ScheduleEntity> scheduleEntities = entityManager.createQuery("SELECT schedule from ScheduleEntity schedule  WHERE schedule.date_car= :date_car")
 				.setParameter("date", date)
 				.getResultList();
 		

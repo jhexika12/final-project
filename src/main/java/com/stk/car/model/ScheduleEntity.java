@@ -1,6 +1,5 @@
 package com.stk.car.model;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 /**
@@ -30,9 +27,8 @@ public class ScheduleEntity {
 	@Column(name = "ID", columnDefinition = "INTEGER")
 	private Integer id;
 	
-	@Column(name= "DATE", columnDefinition="DATE")
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	@Column(name = "DATE_CAR", columnDefinition = "VARCHAR", length = 30)
+	private String date_car;
 	
 	@Column(name = "DESCRIPTION", columnDefinition = "VARCHAR", length = 200)
 	private String description;
@@ -56,13 +52,16 @@ public class ScheduleEntity {
 		return id;
 	}
 
-
-	public Date getDate() {
-		return date;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public String getDate_car() {
+		return date_car;
+	}
+
+	public void setDate_car(String date_car) {
+		this.date_car = date_car;
 	}
 
 	public String getDescription() {
@@ -97,32 +96,37 @@ public class ScheduleEntity {
 		this.engineerInfoEntity = engineerInfoEntity;
 	}
 
-
-	public ScheduleEntity(Integer id, Date date, String description) {
+	public ScheduleEntity(String date_car, String description,
+			UserEntity userEntity, CarDataEntity carDataEntity,
+			EngineerInfoEntity engineerInfoEntity) {
 		super();
-		this.id = id;
-		this.date = date;
+		this.date_car = date_car;
 		this.description = description;
+		this.userEntity = userEntity;
+		this.carDataEntity = carDataEntity;
+		this.engineerInfoEntity = engineerInfoEntity;
 	}
-
 
 	public ScheduleEntity() {
 		super();
-
 	}
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+				+ ((carDataEntity == null) ? 0 : carDataEntity.hashCode());
+		result = prime * result
+				+ ((date_car == null) ? 0 : date_car.hashCode());
+		result = prime
+				* result
+				+ ((engineerInfoEntity == null) ? 0 : engineerInfoEntity
+						.hashCode());
+		result = prime * result
+				+ ((userEntity == null) ? 0 : userEntity.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -133,32 +137,38 @@ public class ScheduleEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		ScheduleEntity other = (ScheduleEntity) obj;
-		if (date == null) {
-			if (other.date != null)
+		if (carDataEntity == null) {
+			if (other.carDataEntity != null)
 				return false;
-		} else if (!date.equals(other.date))
+		} else if (!carDataEntity.equals(other.carDataEntity))
 			return false;
-		if (description == null) {
-			if (other.description != null)
+		if (date_car == null) {
+			if (other.date_car != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!date_car.equals(other.date_car))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (engineerInfoEntity == null) {
+			if (other.engineerInfoEntity != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!engineerInfoEntity.equals(other.engineerInfoEntity))
+			return false;
+		if (userEntity == null) {
+			if (other.userEntity != null)
+				return false;
+		} else if (!userEntity.equals(other.userEntity))
 			return false;
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "ScheduleEntity [id=" + id + ", date=" + date + ", description="
-				+ description + ", userEntity=" + userEntity
+		return "ScheduleEntity [id=" + id + ", date_car=" + date_car
+				+ ", description=" + description + ", userEntity=" + userEntity
 				+ ", carDataEntity=" + carDataEntity + ", engineerInfoEntity="
 				+ engineerInfoEntity + "]";
 	}
+
+	
 
 	
 	

@@ -1,6 +1,5 @@
 package com.stk.car.model;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * User Data Entity (customer)
@@ -43,9 +40,6 @@ public class UserDataEntity {
 	@Column(name= "EMAIL", columnDefinition="VARCHAR", length=30)
 	private String email;
 	
-	@Column(name= "BIRTHDAY", columnDefinition="DATE")
-	@Temporal(TemporalType.DATE)
-	private Date birthday;
 	
 	@OneToOne(optional=false)
 	@JoinColumn(name="USER_ID", nullable = false)
@@ -96,13 +90,6 @@ public class UserDataEntity {
 		this.email = email;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
 
 	public UserEntity getUserEntity() {
 		return userEntity;
@@ -119,13 +106,16 @@ public class UserDataEntity {
 	}
 
 
-	public UserDataEntity(Integer id, String name, String lastName,
-			UserEntity userEntity) {
+	
+
+	public UserDataEntity(String name, String lastName, String address,
+			String phone, String email) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
-		this.userEntity = userEntity;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
 	}
 
 
@@ -133,8 +123,7 @@ public class UserDataEntity {
 	public String toString() {
 		return "UserDataEntity [id=" + id + ", name=" + name + ", lastName="
 				+ lastName + ", address=" + address + ", phone=" + phone
-				+ ", email=" + email + ", birthday=" + birthday
-				+ ", userEntity=" + userEntity + "]";
+				+ ", email=" + email + ", userEntity=" + userEntity + "]";
 	}
 	
 

@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,20 +43,18 @@ public class ScheduleController {
 	 * 
 	 * @param customer
 	 * @param bindingResult
-	 * @param model
 	 * @return entity schedule
 	 */
 	@RequestMapping(value = "/createSchedule", method = RequestMethod.POST )
-	public String createNewCustomer(@Valid ScheduleEntity schedule, BindingResult bindingResult , ModelMap model){
+	public ModelAndView createNewCustomer(@Valid ScheduleEntity schedule, BindingResult bindingResult){
+		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("Creating new schedule" + schedule);
-		if(bindingResult.hasErrors()){
-			return "schedule";
-		}
 		scheduleService.createSchedule(schedule);
-		model.addAttribute("successMsg","Schedule created...");
-		model.addAttribute("schedule", schedule);
+		modelAndView.addObject("successMsg","Schedule created...");
+		modelAndView.addObject("schedule", schedule);
+		modelAndView.setViewName("schedule");
 		
-		return "schedule";
+		return modelAndView;
 		
 	}
 	
@@ -67,7 +64,8 @@ public class ScheduleController {
 		List<ScheduleEntity> scheduleEntities = scheduleService.getAllSchedule();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("viewSchedule");
-		modelAndView.addObject("viewSchedule",scheduleEntities);
+		modelAndView.addObject("schedules",scheduleEntities);
+		
 		return modelAndView;
 	}
 	
